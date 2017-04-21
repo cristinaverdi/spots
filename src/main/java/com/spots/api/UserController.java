@@ -1,5 +1,6 @@
 package com.spots.api;
 
+import com.spots.api.errors.AlreadyExistingException;
 import com.spots.api.errors.UnauthorizedException;
 import com.spots.model.User;
 import com.spots.service.UserService;
@@ -26,6 +27,17 @@ public class UserController {
             return user;
         } else {
             throw new UnauthorizedException("login error");
+        }
+    }
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public @ResponseBody User register(@RequestBody User newUser) { // usuario que se da de alta
+
+        User user = userService.findByEmail(newUser.getEmail()); //user que retorno de la db.
+
+        if (user == null) {
+            return userService.saveUser(newUser);
+        } else {
+            throw new AlreadyExistingException("user already exists: " + newUser.getEmail());
         }
     }
 }
