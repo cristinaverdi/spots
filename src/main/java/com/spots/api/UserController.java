@@ -29,6 +29,7 @@ public class UserController {
             throw new UnauthorizedException("login error");
         }
     }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public @ResponseBody User register(@RequestBody User newUser) { // usuario que se da de alta
 
