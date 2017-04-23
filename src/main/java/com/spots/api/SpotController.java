@@ -6,6 +6,8 @@ import com.spots.service.SpotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/spots")
 public class SpotController {
@@ -14,6 +16,13 @@ public class SpotController {
     @Autowired
     public SpotController(SpotService spotService) {
         this.spotService = spotService;
+    }
+
+    //Endpoints
+
+    @RequestMapping(value= "/all", method = RequestMethod.GET)
+    private List<Spot> findAll() {
+        return spotService.findAll();
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -32,4 +41,5 @@ public class SpotController {
             throw new AlreadyExistingException("Spot already exists");
         }
     }
+
 }

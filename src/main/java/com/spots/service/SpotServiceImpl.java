@@ -15,7 +15,13 @@ public class SpotServiceImpl implements SpotService {
        this.spots = new ArrayList<>();
    }
 
-   /** Find spot depending on introduced search value: name or category
+
+    @Override
+    public List<Spot> findAll() {
+        return this.spots;
+    }
+
+    /** Find spot depending on introduced search value: name or category
     or return null if it doesn't exist*/
     @Override
     public Spot findSpotBySearchValue(String searchValue) {

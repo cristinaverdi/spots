@@ -18,6 +18,9 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    // Endpoints
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody User logIn(@RequestBody User userLogin) { // user que hace login
 
