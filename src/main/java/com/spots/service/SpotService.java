@@ -11,7 +11,8 @@ public interface SpotService {
 
     /** Find spot depending on introduced search value: name or category
      or return null if it doesn't exist*/
-    Spot findSpotBySearchValue(String searchValue);
+
+    List<Spot> findSpotsBySearchValue(String searchValue);
 
     Spot findSpotByName(String name);
 

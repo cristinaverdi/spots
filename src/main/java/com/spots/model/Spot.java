@@ -1,13 +1,14 @@
 package com.spots.model;
-
 import java.util.Date;
 
 public class Spot {
 
     private String name;
     private String description;
-    private String category;
-    //TODO: add location, contributorId, rating and usersWhoVoted, creationDate
+    private Category category;
+    private Subcategory subcategory;
+    private Date creationDate;
+    //TODO: add location, contributorId, rating and usersWhoVoted, can belong to one or more categories and subcategories?
 
 
     public String getName() {
@@ -26,11 +27,23 @@ public class Spot {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }

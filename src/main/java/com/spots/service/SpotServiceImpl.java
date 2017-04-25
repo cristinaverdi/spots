@@ -24,13 +24,14 @@ public class SpotServiceImpl implements SpotService {
     /** Find spot depending on introduced search value: name or category
     or return null if it doesn't exist*/
     @Override
-    public Spot findSpotBySearchValue(String searchValue) {
+    public List<Spot> findSpotsBySearchValue(String searchValue) {
+        List<Spot> result = new ArrayList<>();
         for (Spot spot : spots) {
-            if(spot.getName().equals(searchValue) || spot.getCategory().equals(searchValue)) {
-                return spot;
+            if(spot.getName().contains(searchValue) || spot.getCategory().equals(searchValue) || spot.getSubcategory().equals(searchValue)) {
+                result.add(spot);
             }
         }
-       return null;
+       return result;
     }
 
     @Override
